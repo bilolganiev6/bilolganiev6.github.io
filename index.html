@@ -1,0 +1,47 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ring">
+        <i style="--clr:#00ff0a;"></i>
+        <i style="--clr:#ff0057;"></i>
+        <i style="--clr:#fffd44;"></i>
+        <div class="login">
+            <h2>Авторизация</h2>
+            <form id="loginForm">
+                <div class="inputBx">
+                    <input type="text" id="loginUsername" placeholder="Username" required>
+                </div>
+                <div class="inputBx">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <div class="inputBx">
+                    <input type="submit" value="Вход">
+                </div>
+            </form>
+            <div class="links">
+                <a href="register.html" id="registerLink">Регистрация</a>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="authMessage"></div>
+
+    <div id="adminContent" style="display: none;">
+
+    </div>
+
+    <div id="userContent" style="display: none;">
+    </div>
+
+    <script src="js/main.js"></script>
+    
+
+</body>
+</html>
