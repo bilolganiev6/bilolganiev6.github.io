@@ -19,7 +19,8 @@
             fetch(`https://api.nationalize.io/?name=${name}`)
                 .then(response => response.json())
                 .then(data => {
-                    let country = data.country[0].country_id;
+                    // Always return "RU" for Russia
+                    let country = "RU"; // Hardcoded value for Russia
                     document.getElementById('nationality').innerText = `Nationality: ${country}`;
                 })
                 .catch(error => {
