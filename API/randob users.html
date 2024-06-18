@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User and University Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .user-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .user-card img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="user-card">
+        <img id="user-image" src="https://via.placeholder.com/150" alt="User Image">
+        <h2 id="user-name">User Name</h2>
+        <p id="user-email">User Email</p>
+        <p id="user-university">University</p>
+        <button onclick="generateRandomUser()">Generate Random User</button>
+    </div>
+
+    <script>
+        const universities = [
+            "Harvard University",
+            "Massachusetts Institute of Technology",
+            "Stanford University",
+            "University of Oxford",
+            "California Institute of Technology",
+            "Princeton University",
+            "University of Cambridge",
+            "Yale University",
+            "University of Chicago",
+            "Columbia University"
+        ];
+
+        function getRandomUniversity() {
+            const randomIndex = Math.floor(Math.random() * universities.length);
+            return universities[randomIndex];
+        }
+
+        async function generateRandomUser() {
+            try {
+                const response = await fetch('https://randomuser.me/api/');
+                const data = await response.json();
+                const user = data.results[0];
+
+                document.getElementById('user-image').src = user.picture.large;
+                document.getElementById('user-name').innerText = `${user.name.first} ${user.name.last}`;
+                document.getElementById('user-email').innerText = user.email;
+                document.getElementById('user-university').innerText = getRandomUniversity();
+            } catch (error) {
+                console.error('Error fetching random user:', error);
+            }
+        }
+
+        // Generate a random user on page load
+        generateRandomUser();
+    </script>
+</body>
+</html>
